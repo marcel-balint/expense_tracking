@@ -22,12 +22,27 @@
     left: 105px;
     bottom: -10px;
   }
+  .change-title p {
+    display: none;
+    color: red;
+    position: absolute;
+    bottom: -36px;
+    z-index: 1;
+    font-style: italic;
+  }
+  p.show-required {
+    display: block;
+  }
   .change-title input {
     border-radius: 3px;
     height: 24px;
     padding-left: 10px;
   }
 
+.invalid {
+    border: 3px solid red;
+    background-color: rgb(215, 156, 156);;
+  }
   .change-title__cancel {
     margin-left: 3px;
   }

@@ -6,26 +6,44 @@ const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  const [validForm, setValidForm] = useState(true);
 
   const titleChangeHandler = (e) => {
+    if (enteredTitle) {
+      setValidForm(true);
+    }
     setEnteredTitle(e.target.value);
   };
   const amountChangeHandler = (e) => {
+    if (enteredAmount) {
+      setValidForm(true);
+    }
     setEnteredAmount(e.target.value);
   };
 
   const dateChangeHandler = (e) => {
+    if (enteredDate) {
+      setValidForm(true);
+    }
     setEnteredDate(e.target.value);
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (
+      enteredTitle.length === 0 ||
+      enteredAmount.length === 0 ||
+      enteredDate.length === 0
+    ) {
+      setValidForm(false);
+      return;
+    }
     const expenseData = {
       title: enteredTitle,
       amount: +enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(enteredDate);
+
     props.onSaveExpenseData(expenseData);
     setEnteredTitle("");
     setEnteredAmount("");
@@ -36,7 +54,11 @@ const ExpenseForm = (props) => {
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
+          <p className={`${!validForm ? "show-required" : ""} `}>
+            Required field
+          </p>
           <input
+            className={`${!validForm ? "invalid" : ""}`}
             type="text"
             value={enteredTitle}
             onChange={titleChangeHandler}
@@ -44,7 +66,11 @@ const ExpenseForm = (props) => {
         </div>
         <div className="new-expense__control">
           <label>Amont</label>
+          <p className={`${!validForm ? "show-required" : ""} `}>
+            Required field
+          </p>
           <input
+            className={`${!validForm ? "invalid" : ""}`}
             type="number"
             min="0.01"
             step="0.01"
@@ -54,7 +80,11 @@ const ExpenseForm = (props) => {
         </div>
         <div className="new-expense__control">
           <label>Date</label>
+          <p className={`${!validForm ? "show-required" : ""} `}>
+            Required field
+          </p>
           <input
+            className={`${!validForm ? "invalid" : ""}`}
             type="date"
             min="2015-01-01"
             max="2023-12-31"

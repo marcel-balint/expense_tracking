@@ -11,7 +11,9 @@
     margin-bottom: 0.5rem;
     display: block;
   }
-  
+  .new-expense__control label.ivalid {
+    color: red;
+  }
   .new-expense__control input {
     font: inherit;
     padding: 0.5rem;
@@ -21,6 +23,18 @@
     max-width: 100%;
   }
   
+  .new-expense__control p {
+    display: none;
+    color: red;
+    position: absolute;
+    bottom: -36px;
+    z-index: 1;
+    font-style: italic;
+  }
+  .new-expense__control p.show-required {
+    display: block;
+    position: initial;
+  }
   .new-expense__actions {
     text-align: right;
   }

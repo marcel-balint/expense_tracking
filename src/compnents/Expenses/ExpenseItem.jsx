@@ -9,8 +9,12 @@ const ExpenseItem = (props) => {
   const [inputVal, setInputVal] = useState("");
   const [currentTitle, setCurrentTitle] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [validForm, setValidForm] = useState(true);
 
   const titleChangeHandler = (e) => {
+    if (e.target.value.length > 2) {
+      setValidForm(true);
+    }
     setInputVal(e.target.value);
     setTitle(e.target.value);
   };
@@ -21,8 +25,8 @@ const ExpenseItem = (props) => {
   };
 
   const addNewTitle = () => {
-    console.log(inputVal);
     if (inputVal.length === 0) {
+      setValidForm(false);
       return;
     }
     setShowForm(false);
@@ -37,12 +41,16 @@ const ExpenseItem = (props) => {
   if (showForm) {
     modifyTitleForm = (
       <form className="change-title">
+        <p className={`${!validForm ? "show-required" : ""} `}>
+          Required field
+        </p>
+
         <input
+          className={`${!validForm ? "invalid" : ""} `}
           type="text"
           onChange={titleChangeHandler}
-          placeholder="Add a title..."
+          placeholder="*Add a title..."
         />
-
         <button
           className="change-title__add"
           onClick={addNewTitle}
