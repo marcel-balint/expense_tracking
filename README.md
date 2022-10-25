@@ -8,9 +8,9 @@ In this project I used basic React.js features as follows:
   - Listening to user input;
   - Two-way data binding;
   - Handling form submission;
-  - Passing data from _child_ to _parent_ components (botto-op)
+  - Passing data from _child_ to _parent_ components (bottom-up)
 
-- **Rendering lists and conditional content**
+- **Rendering lists and conditional content:**
 
   - Working with lists (rendering lists of data);
   - Outputting conditional content;
