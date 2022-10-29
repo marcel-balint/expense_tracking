@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 
-import "./ExpenseItem.css";
+import styles from "./ExpenseItem.module.css";
 
 const ExpenseItem = (props) => {
   const [title, setTitle] = useState(props.title);
@@ -40,26 +40,26 @@ const ExpenseItem = (props) => {
   let modifyTitleForm = null;
   if (showForm) {
     modifyTitleForm = (
-      <form className="change-title">
-        <p className={`${!validForm ? "show-required" : ""} `}>
+      <form className={styles.changeTitle}>
+        <p className={`${!validForm ? styles.showRequired : ""} `}>
           Required field
         </p>
 
         <input
-          className={`${!validForm ? "invalid" : ""} `}
+          className={`${!validForm ? styles.invalid : ""} `}
           type="text"
           onChange={titleChangeHandler}
           placeholder="*Add a title..."
         />
         <button
-          className="change-title__add"
+          className={styles.changeTitle__add}
           onClick={addNewTitle}
           type="button"
         >
           ADD
         </button>
         <button
-          className="change-title__cancel"
+          className={styles.changeTitle__cancel}
           onClick={hideForm}
           type="button"
         >
@@ -71,16 +71,16 @@ const ExpenseItem = (props) => {
 
   return (
     <li>
-      <Card className="expense-item">
-        <div className="expense-date">
+      <Card className={styles.expenseItem}>
+        <div className={styles.expenseDate}>
           <ExpenseDate date={props.date} />
         </div>
-        <div className="expense-item__description">
+        <div className={styles.expenseItem__description}>
           <h2>{title}</h2>
-          <div className="expense-item__price">${props.amount}</div>
+          <div className={styles.expenseItem__price}>${props.amount}</div>
         </div>
         {modifyTitleForm}
-        <button className="add-title-btn" onClick={displayForm}>
+        <button className={styles.addTitleBtn} onClick={displayForm}>
           Change Title
         </button>
       </Card>

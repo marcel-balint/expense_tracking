@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "./ExpenseForm.css";
+import styles from "./ExpenseForm.module.css";
 
 const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
@@ -51,26 +51,26 @@ const ExpenseForm = (props) => {
   };
   return (
     <form onSubmit={submitHandler}>
-      <div className="new-expense__controls">
-        <div className="new-expense__control">
+      <div className={styles.newExpense__controls}>
+        <div className={styles.newExpense__control}>
           <label>Title</label>
-          <p className={`${!validForm ? "show-required" : ""} `}>
+          <p className={`${!validForm ? styles.showRequired : ""} `}>
             Required field
           </p>
           <input
-            className={`${!validForm ? "invalid" : ""}`}
+            className={`${!validForm ? styles.invalid : ""}`}
             type="text"
             value={enteredTitle}
             onChange={titleChangeHandler}
           />
         </div>
-        <div className="new-expense__control">
+        <div className={styles.newExpense__control}>
           <label>Amont</label>
-          <p className={`${!validForm ? "show-required" : ""} `}>
+          <p className={`${!validForm ? styles.showRequired : ""} `}>
             Required field
           </p>
           <input
-            className={`${!validForm ? "invalid" : ""}`}
+            className={`${!validForm ? styles.invalid : ""}`}
             type="number"
             min="0.01"
             step="0.01"
@@ -78,13 +78,13 @@ const ExpenseForm = (props) => {
             onChange={amountChangeHandler}
           />
         </div>
-        <div className="new-expense__control">
+        <div className={styles.newExpense__control}>
           <label>Date</label>
-          <p className={`${!validForm ? "show-required" : ""} `}>
+          <p className={`${!validForm ? styles.showRequired : ""} `}>
             Required field
           </p>
           <input
-            className={`${!validForm ? "invalid" : ""}`}
+            className={`${!validForm ? styles.invalid : ""}`}
             type="date"
             min="2015-01-01"
             max="2023-12-31"
@@ -93,7 +93,7 @@ const ExpenseForm = (props) => {
           />
         </div>
       </div>
-      <div className="new-expense__actions">
+      <div className={styles.newExpense__actions}>
         <button onClick={props.onCancel} type="button">
           Cancel
         </button>
